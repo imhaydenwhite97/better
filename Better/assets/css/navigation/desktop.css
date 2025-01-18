@@ -1,0 +1,228 @@
+/* Desktop Navigation Styles */
+:root {
+    --header-height: 60px;
+    --mega-menu-height: 300px;
+}
+
+/* Menu Container */
+.desktop-header {
+    height: var(--header-height);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: calc(100% - 40px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--background-light);
+    padding: 0 20px;
+    z-index: 1001;
+    transition: var(--transition-base);
+}
+
+/* Logo Container */
+.desktop-header .logo {
+    height: var(--header-height);
+    padding: 8px 0;
+    display: flex;
+    align-items: center;
+}
+
+/* Logo Link */
+.desktop-header .logo a {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* Desktop Logo Specific */
+.desktop-header .logo .desktop-logo {
+    max-height: calc(var(--header-height) - 30px);
+    width: auto;
+    object-fit: contain;
+    display: block;
+	height: var(--header-height);
+}
+
+/* Mobile Logo (hidden on desktop) */
+.desktop-header .logo .mobile-logo {
+    display: none;
+}
+
+/* Menu Item Layout */
+.desktop-header .priority-links {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    gap: 2rem;
+}
+
+/* Remove Default List Styling */
+.priority-links ul, 
+.priority-links li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.desktop-header .priority-links .menu-item {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.desktop-header .priority-links .menu-item > a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-size: var(--font-size-base);
+    padding: 5px 10px;
+    transition: var(--transition-fast);
+    font-weight: 500;
+}
+
+.desktop-header .priority-links .menu-item > a:hover {
+    color: var(--primary-color);
+}
+
+/* Enhanced Mega Menu Styling */
+.mega-menu {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: #fff;
+    overflow: hidden;
+    transition: height 0.3s ease;
+    z-index: 999;
+}
+
+.mega-menu.active {
+    height: var(--mega-menu-height);
+    box-shadow: var(--shadow-md);
+}
+
+.mega-menu-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px;
+    display: flex;
+    gap: 40px;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all var(--transition-base);
+}
+
+.mega-menu.active .mega-menu-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Featured Section */
+.featured-section {
+    flex: 0 0 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.featured-image {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.featured-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.featured-text {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #666;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background: var(--primary-color);
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    align-self: flex-start;
+}
+
+/* Mega Menu Column Layout */
+.mega-menu-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    gap: 40px;
+}
+
+.menu-columns {
+    display: flex;
+    gap: 40px;
+}
+
+.column {
+    min-width: 200px;
+}
+
+.column h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.column-items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.column-items a {
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease;
+}
+
+/* User Auth Buttons */
+.user-auth {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.user-auth button {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.user-auth button:hover {
+    background-color: var(--primary-color-dark);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+    .menu-columns {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .menu-columns {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
