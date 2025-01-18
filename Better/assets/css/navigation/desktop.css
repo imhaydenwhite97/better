@@ -22,32 +22,49 @@
 
 /* Logo Container */
 .desktop-header .logo {
+    flex: 0 0 150px; /* Smaller base width */
     height: var(--header-height);
-    padding: 8px 0;
     display: flex;
     align-items: center;
 }
 
-/* Logo Link */
 .desktop-header .logo a {
-    height: 100%;
     display: flex;
     align-items: center;
+    height: 100%;
+    padding: 12px 0;
 }
 
-/* Desktop Logo Specific */
 .desktop-header .logo .desktop-logo {
-    max-height: calc(var(--header-height) - 30px);
+    height: 25px; /* Small base height */
     width: auto;
     object-fit: contain;
-    display: block;
-	height: var(--header-height);
+    object-position: left center;
+    transition: height 0.3s ease;
 }
 
-/* Mobile Logo (hidden on desktop) */
-.desktop-header .logo .mobile-logo {
-    display: none;
+/* Responsive Scaling */
+@media (min-width: 768px) {
+    .desktop-header .logo {
+        flex: 0 0 175px;
+    }
+    
+    .desktop-header .logo .desktop-logo {
+        height: 25px;
+    }
 }
+
+@media (min-width: 1200px) {
+    .desktop-header .logo {
+        flex: 0 0 200px;
+    }
+    
+    .desktop-header .logo .desktop-logo {
+        height: 30px;
+    }
+}
+
+
 
 /* Menu Item Layout */
 .desktop-header .priority-links {

@@ -109,3 +109,61 @@ function better_get_logo($type = 'primary') {
     }
     return $logo;
 }
+
+// Mega Menu Featured Section
+function better_mega_menu_customizer($wp_customize) {
+    // Add Mega Menu Section
+    $wp_customize->add_section('mega_menu_features', array(
+        'title' => 'Mega Menu Features',
+        'priority' => 32,
+        'description' => 'Customize featured sections for different mega menu variations'
+    ));
+
+    // Array of menu variations
+    $menu_variations = array(
+        'buy' => 'Buy Properties',
+        'rent' => 'Rent Properties',
+        'invest' => 'Investment Properties'
+    );
+
+    // Create settings for each variation
+    foreach($menu_variations as $key => $label) {
+        // Featured Image
+        $wp_customize->add_setting("mega_menu_{$key}_image", array(
+            'transport' => 'refresh'
+        ));
+        $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, "mega_menu_{$key}_image", array(
+            'label' => "{$label} Featured Image",
+            'section' => 'mega_menu_features'
+        )));
+
+        // Featured Text
+        $wp_customize->add_setting("mega_menu_{$key}_text", array(
+            'transport' => 'refresh'
+        ));
+        $wp_customize->add_control("mega_menu_{$key}_text", array(
+            'label' => "{$label} Featured Text",
+            'section' => 'mega_menu_features',
+            'type' => 'textarea'
+        ));
+
+        // CTA Text
+        $wp_customize->add_setting("mega_menu_{$key}_cta_text", array(
+            'transport' => 'refresh'
+        ));
+        $wp_customize->add_control("mega_menu_{$key}_cta_text", array(
+            'label' => "{$label} CTA Text",
+            'section' => 'mega_menu_features'
+        ));
+
+        // CTA URL
+        $wp_customize->add_setting("mega_menu_{$key}_cta_url", array(
+            'transport' => 'refresh'
+        ));
+        $wp_customize->add_control("mega_menu_{$key}_cta_url", array(
+            'label' => "{$label} CTA URL",
+            'section' => 'mega_menu_features'
+        ));
+    }
+}
+add_action('customize_register', 'better_mega_menu_customizer');

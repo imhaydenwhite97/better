@@ -54,3 +54,33 @@ add_action('customize_register', 'better_customize_register');
 
 // Call Customizer
 require_once get_template_directory() . '/inc/customizer.php';
+
+//Helper for Mega Menu Content
+function better_get_mega_menu_content($variation = 'buy') {
+    return array(
+        'image' => get_theme_mod("mega_menu_{$variation}_image"),
+        'text' => get_theme_mod("mega_menu_{$variation}_text"),
+        'cta_text' => get_theme_mod("mega_menu_{$variation}_cta_text"),
+        'cta_url' => get_theme_mod("mega_menu_{$variation}_cta_url")
+    );
+}
+
+// Add SVG to allowed upload types
+function add_svg_support($mimes) {
+    $mimes['svg'] = 'image/svg+xml';
+    return $mimes;
+}
+add_filter('upload_mimes', 'add_svg_support');
+
+// Ensure SVG uploads are properly handled
+function handle_svg_upload($data, $file, $filename, $mimes) {
+    $filetype = wp_check_filetype($filename, $mimes);
+    
+    if ('svg' === $filetype['ext']) {
+        $data['type'] = 'image/svg+xml';
+        $data['ext'] = 'svg';
+    }
+    
+    return $data;
+}
+add_filter('wp_check_filetype_and_ext', 'handle_svg_upload', 10, 4);

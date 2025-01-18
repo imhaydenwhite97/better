@@ -8,15 +8,20 @@ class Desktop_Menu_Walker extends Walker_Nav_Menu {
             // First level - Start mega menu container
             $output .= '<div class="mega-menu"><div class="mega-menu-content">';
             
-            // Featured Section
+            // Get dynamic featured content based on menu item slug
+            $menu_content = better_get_mega_menu_content($this->current_parent);
+            
+            // Featured Section with dynamic content
             $output .= '<div class="featured-section">';
             $output .= '<div class="featured-image">';
-            $output .= '<img src="' . get_theme_file_uri('assets/images/featured-image.jpg') . '" alt="Featured Property">';
+            $output .= '<img src="' . esc_url($menu_content['image']) . '" alt="Featured">';
             $output .= '</div>';
             $output .= '<div class="featured-text">';
-            $output .= 'Discover your dream property with our expert guidance and comprehensive listings.';
+            $output .= wp_kses_post($menu_content['text']);
             $output .= '</div>';
-            $output .= '<a href="/properties" class="cta-button">Explore Properties</a>';
+            $output .= '<a href="' . esc_url($menu_content['cta_url']) . '" class="cta-button">';
+            $output .= esc_html($menu_content['cta_text']);
+            $output .= '</a>';
             $output .= '</div>';
             
             // Menu Columns
@@ -39,6 +44,9 @@ class Desktop_Menu_Walker extends Walker_Nav_Menu {
 
     public function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) {
         if ($depth === 0) {
+            // Store current parent menu item
+            $this->current_parent = $item->ID;
+            
             // Top level menu items
             $output .= '<div class="menu-item">';
             $output .= '<a href="' . esc_url($item->url) . '">' . esc_html($item->title) . '</a>';
