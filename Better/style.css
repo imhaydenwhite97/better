@@ -8,8 +8,39 @@ License: GNU General Public License v2 or later
 Text Domain: thebetterco
 */
 
+
+/* Global Font Styling */
+/* Import fonts - choose one method */
+
+/* Method 2: Self-hosted fonts */
+@font-face {
+    font-family: "Value Serif";
+    src: url("../assets/fonts/value-serif-medium.ttf") format("truetype");
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "GT Walsheim";
+    src: url("../assets/fonts/GT-Walsheim-Regular.otf") format("opentype");
+    font-weight: 400;
+    font-display: swap;
+}
+
 /* Base styles and CSS variables */
 :root {
+    /* Font families */
+    --fonts--heading: "Value Serif", sans-serif;
+    --fonts--body: "GT Walsheim", sans-serif;
+
+    /* Font sizes */
+    --font-size-xs: 0.75rem;    /* 12px */
+    --font-size-sm: 0.875rem;   /* 14px */
+    --font-size-base: 1rem;     /* 16px */
+    --font-size-lg: 1.125rem;   /* 18px */
+    --font-size-xl: 1.25rem;    /* 20px */
+    --font-size-2xl: 1.5rem;    /* 24px */
+
     /* Colors */
     --primary-color: #28a745;
     --secondary-color: #333333;
@@ -22,13 +53,6 @@ Text Domain: thebetterco
     --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
     --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
     --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
-    
-    /* Typography */
-    --font-primary: 'Inter', sans-serif;
-    --font-size-sm: 0.875rem;
-    --font-size-base: 1rem;
-    --font-size-lg: 1.125rem;
-    --font-size-xl: 1.25rem;
     
     /* Spacing */
     --spacing-xs: 0.25rem;
