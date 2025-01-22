@@ -1,0 +1,101 @@
+.mobile-auth-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+}
+
+.mobile-auth-card {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+    border-radius: 20px 20px 0 0;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    z-index: 1001;
+}
+
+.mobile-auth-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-auth-overlay.active .mobile-auth-card {
+    transform: translateY(0);
+}
+
+.auth-header {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.close-auth {
+    position: absolute;
+    left: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+}
+.form-error {
+    background: #ff4444;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    transform: translateY(-10px);
+    opacity: 0;
+    animation: slideDown 0.3s forwards;
+}
+
+.form-field {
+    margin-bottom: 16px;
+}
+
+.form-field input {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.2s ease;
+}
+
+.form-field input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 16px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+button[type="submit"]:disabled {
+    opacity: 0.7;
+}
+
+@keyframes slideDown {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

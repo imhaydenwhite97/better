@@ -1,0 +1,87 @@
+.series-creation-container {
+    max-width: 800px;
+    margin: 80px auto;
+    padding: 40px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.form-section {
+    margin-bottom: 32px;
+}
+
+.form-section h2 {
+    font-size: 20px;
+    margin-bottom: 16px;
+    color: var(--text-dark);
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #999;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+.form-group input:focus::placeholder,
+.form-group textarea:focus::placeholder {
+    opacity: 0;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    background: white;
+    color: var(--text-dark);
+    position: relative;
+    z-index: 1;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+.form-group textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+.submit-button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.submit-button:hover {
+    background: var(--primary-color-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}

@@ -9,22 +9,9 @@
     <?php wp_body_open(); ?>
     
     <?php 
-    // Check if we're on a dashboard page
-    $is_dashboard = is_page('dashboard') || is_page_template('template-dashboard.php');
-
-    if ($is_dashboard && is_user_logged_in()) {
-        // Show dashboard navigation on dashboard pages for logged-in users
-        if (wp_is_mobile()) {
-            get_template_part('template-parts/navigation/mobile-dashboard');
-        } else {
-            get_template_part('template-parts/navigation/desktop-dashboard');
-        }
+    if (wp_is_mobile()) {
+        get_template_part('template-parts/navigation/mobile-menu');
     } else {
-        // Show regular navigation everywhere else
-        if (wp_is_mobile()) {
-            get_template_part('template-parts/navigation/mobile-menu');
-        } else {
-            get_template_part('template-parts/navigation/desktop-menu');
-        }
+        get_template_part('template-parts/navigation/desktop-menu');
     }
     ?>
